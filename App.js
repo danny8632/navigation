@@ -1,40 +1,38 @@
 
 import React from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import Post from './components/post';
+import { StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './components/screens/homeScreen';
+import SearchScreen from './components/screens/searchScreen';
+import PostScreen from './components/screens/postScreen';
 
 
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+	return (
+		<HomeStack.Navigator>
+			<HomeStack.Screen name="Home" component={HomeScreen} />
+			<HomeStack.Screen name="POST" component={PostScreen} options={({ route }) => ({ title: route.params.name })} />
+		</HomeStack.Navigator>
+	);
+}
+
+const Tab = createBottomTabNavigator();
 
 export default () => {
-
-	let post = {title : "hello dads adasdas da sad", username : "tetser1234"}
-
 	return (
-		<SafeAreaView style={styles.container}>
-			<ScrollView contentContainerStyle={styles.scroll} >
-				<Post post={post}></Post>
-				<Post post={post}></Post>
-				<Post post={post}></Post>
-				<Post post={post}></Post>
-			</ScrollView>
-		</SafeAreaView>
+		<NavigationContainer>
+			<Tab.Navigator>
+				<Tab.Screen name="Home" component={HomeStackScreen} />
+				<Tab.Screen name="Search" component={SearchScreen} />
+			</Tab.Navigator>
+		</NavigationContainer>
 	);
 }
 
 const styles = StyleSheet.create({
-	container : {
-		flex: 1,
-		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-	},
-	scroll : {
-		flexGrow: 1,
-		justifyContent: 'space-between'
-	},
-	post_title : {
-		flexDirection: "row",
-		width: '100%',
-		alignItems: "center",
-		backgroundColor: "#999",
-		paddingLeft: 16
-	}
+
 });

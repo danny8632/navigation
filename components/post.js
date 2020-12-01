@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Dimensions } from 'react-native';
-
+import { StyleSheet, Image, Text, View, Dimensions,  Button } from 'react-native';
 
 const Post = ({ post }) => {
 
@@ -15,7 +14,7 @@ const Post = ({ post }) => {
                 <Text style={styles.username}>{post.username}</Text>
             </View>
             <View>
-                <Image style={{ width: imageWidth, height: imageHeight, resizeMode: 'cover' }} source={require('./../assets/icon.png')}></Image>
+                <Image style={{ width: imageWidth, height: imageHeight, resizeMode: 'cover' }} source={{uri: post.image}}></Image>
             </View>
             <View style={styles.post_text}>
                 <Text>{post.title}</Text>
@@ -24,21 +23,20 @@ const Post = ({ post }) => {
     );
 }
 
-
-
-
 export default Post;
 
 const styles = StyleSheet.create({
     post : {
-        marginBottom: 6
+        marginBottom: 12
     },
     post_title: {
         flexDirection: "row",
         width: '100%',
         alignItems: "center",
-        backgroundColor: "#999",
-        paddingLeft: 16
+        /* backgroundColor: "#999", */
+        paddingLeft: 16,
+        paddingTop: 4,
+        paddingBottom : 4
     },
     username: {
         paddingLeft: 16, 
@@ -47,6 +45,6 @@ const styles = StyleSheet.create({
     },
     post_text : {
         width: "100%",
-        backgroundColor: "#999"
+        /* backgroundColor: "#999" */
     }
 });
