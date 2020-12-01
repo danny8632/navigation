@@ -17,7 +17,7 @@ const Post = ({ post }) => {
                 <Image style={{ width: imageWidth, height: imageHeight, resizeMode: 'cover' }} source={{uri: post.image}}></Image>
             </View>
             <View style={styles.post_text}>
-                <Text>{post.title}</Text>
+                <Text style={{fontWeight : "bold"}}>{post.title}</Text>
             </View>
         </View>
     );
@@ -27,13 +27,12 @@ export default Post;
 
 const styles = StyleSheet.create({
     post : {
-        marginBottom: 12
+        marginBottom: 0
     },
     post_title: {
         flexDirection: "row",
         width: '100%',
         alignItems: "center",
-        /* backgroundColor: "#999", */
         paddingLeft: 16,
         paddingTop: 4,
         paddingBottom : 4
@@ -45,6 +44,8 @@ const styles = StyleSheet.create({
     },
     post_text : {
         width: "100%",
-        /* backgroundColor: "#999" */
+        padding: 4,
+        paddingLeft : 10,
+        paddingRight : 10
     }
 });

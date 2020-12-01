@@ -15,7 +15,7 @@ function HomeStackScreen() {
 	return (
 		<HomeStack.Navigator>
 			<HomeStack.Screen name="Home" component={HomeScreen} />
-			<HomeStack.Screen name="POST" component={PostScreen} options={({ route }) => ({ title: route.params.name })} />
+			<HomeStack.Screen name="POST" component={PostScreen} options={({ route }) => ({ title: route.params.post.title })} />
 		</HomeStack.Navigator>
 	);
 }

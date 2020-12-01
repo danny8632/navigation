@@ -36,6 +36,7 @@ const SearchScreen = () => {
             <TextInput style={styles.textinput} />
 
             <FlatList
+                style={{width : "100%"}}
                 data={DATA}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
@@ -50,15 +51,19 @@ export default SearchScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        justifyContent: "center"
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     textinput: {
-        width: "80%",
-        height: 40,
         borderWidth: 1,
+        width : "93%",
+        height: 40,
         borderColor: "#111",
-        borderRadius: 1
+        borderRadius: 6,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     item: {
         backgroundColor: '#f9c2ff',
