@@ -2,37 +2,41 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 
 const LoginScreen = () => {
-    const [emailTxt, setEmailTxt] = React.useState('');
-    const [passwordTxt, setPasswordTxt] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     return (
         <View style={styles.container}>
-            <Text>Login Screen</Text>
-            <View style={styles.inputView} >
-                <TextInput  
+            <View style={styles.inputView}>
+                <TextInput
                     style={styles.inputText}
-                    placeholder="Email..." 
+                    placeholder="Email or username" 
                     placeholderTextColor="#003f5c"
-                    onChangeText={text => setEmailTxt(text)}
-                    value={emailTxt}/>
+                    onChangeText={text => setUsername(text)}
+                    value={username}
+                />
             </View>
-            <View style={styles.inputView} >
-                <TextInput  
-                    secureTextEntry
+                
+            <View style={styles.inputView}>
+                <TextInput
                     style={styles.inputText}
-                    placeholder="Password..." 
+                    placeholder="Password" 
                     placeholderTextColor="#003f5c"
-                    onChangeText={text => setPasswordTxt(text)}
-                    value={passwordTxt}/>
+                    onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
+                    value={password}
+                />
             </View>
+
+
             <TouchableOpacity>
                 <Text style={styles.forgot}>Forgot Password?</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.loginBtn} onPress={console.log(emailTxt)}>
+            <TouchableOpacity style={styles.loginBtn} onPress={() => console.log(username)}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.loginText}>Sign Up</Text>
+                <Text style={styles.loginText}>Signup</Text>
             </TouchableOpacity>
         </View>
     );
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
         height: 50,
         color: 'white'
     },
-    loginBtn:{
+    loginBtn: {
         width: '80%',
         backgroundColor: '#fb5b5a',
         borderRadius: 25,
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 10
       },
-    loginText:{
+    loginText: {
         color: 'white'
     }
 });
