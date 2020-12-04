@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Dimensions,  Button } from 'react-native';
+import { StyleSheet, Image, Text, View, Dimensions,  Button, ScrollView } from 'react-native';
 
 const Post = ({ post }) => {
 
