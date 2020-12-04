@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from 'common';
+import { Button } from '../../common';
 
 const LoginScreen = () => {
     const [username, setUsername] = React.useState('');
@@ -29,9 +29,8 @@ const LoginScreen = () => {
                 />
             </View>
 
-            <TouchableOpacity style={styles.loginBtn} onPress={() => console.log(username)}>
-                <Text style={styles.loginText}>LOGIN</Text>
-            </TouchableOpacity>
+            <Button title="Login" onPress={() => console.log(username, password)} style={styles.loginBtn} />
+
             <TouchableOpacity>
                 <Text style={styles.loginText}>Sign Up</Text>
             </TouchableOpacity>
