@@ -11,7 +11,7 @@ const LoginScreen = () => {
                 <TextInput
                     style={styles.inputText}
                     placeholder="Email or username" 
-                    placeholderTextColor="#003f5c"
+                    placeholderTextColor="#bbbebf"
                     onChangeText={text => setUsername(text)}
                     value={username}
                 />
@@ -21,22 +21,18 @@ const LoginScreen = () => {
                 <TextInput
                     style={styles.inputText}
                     placeholder="Password" 
-                    placeholderTextColor="#003f5c"
+                    placeholderTextColor="#bbbebf"
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}
                     value={password}
                 />
             </View>
 
-
-            <TouchableOpacity>
-                <Text style={styles.forgot}>Forgot Password?</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.loginBtn} onPress={() => console.log(username)}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.loginText}>Signup</Text>
+                <Text style={styles.loginText}>Sign Up</Text>
             </TouchableOpacity>
         </View>
     );
