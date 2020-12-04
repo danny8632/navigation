@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/screens/homeScreen';
 import SearchScreen from './components/screens/searchScreen';
 import PostScreen from './components/screens/postScreen';
+import LoginScreen from './components/screens/loginScreen';
 
 
 const HomeStack = createStackNavigator();
@@ -28,6 +29,7 @@ export default () => {
 			<Tab.Navigator>
 				<Tab.Screen name="Home" component={HomeStackScreen} />
 				<Tab.Screen name="Search" component={SearchScreen} />
+				<Tab.Screen name="Login" component={LoginScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
