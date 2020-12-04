@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Button } from 'common';
 
 const LoginScreen = () => {
     const [username, setUsername] = React.useState('');
