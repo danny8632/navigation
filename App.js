@@ -69,7 +69,7 @@ export default () => {
 	
 		  // This will switch to the App screen or Auth screen and this loading
 		  // screen will be unmounted and thrown away.
-		  dispatch({ type: 'RESTORE_TOKEN', userToken: storedToken });
+		  dispatch({ type: 'RESTORE_TOKEN', token: storedToken });
 		};
 	
 		bootstrapAsync();
@@ -84,7 +84,7 @@ export default () => {
 			// We will also need to handle errors if sign in failed
 			// After getting token, we need to persist the token using `AsyncStorage`
 			// In the example, we'll use a dummy token
-			dispatch({ type: 'SIGN_IN', userToken: 'dummy-auth-token' });
+			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
 		},
 		signOut: () => dispatch({ type: 'SIGN_OUT' }),
 		signUp: async data => {
@@ -93,7 +93,7 @@ export default () => {
 			// After getting token, we need to persist the token using `AsyncStorage`
 			// In the example, we'll use a dummy token
 
-			dispatch({ type: 'SIGN_IN', userToken: 'dummy-auth-token' });
+			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
 		},
 		}),
 		[]
