@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +7,7 @@ import HomeScreen from './components/screens/homeScreen';
 import SearchScreen from './components/screens/searchScreen';
 import PostScreen from './components/screens/postScreen';
 import LoginScreen from './components/screens/loginScreen';
+import CreatepostScreen from './components/screens/createpostScreen';
 import AuthContext from './components/authContext';
 
 const HomeStack = createStackNavigator();
@@ -57,10 +57,10 @@ export default () => {
 	React.useEffect(() => {
 		// Fetch the token from storage then navigate to our appropriate place
 		const bootstrapAsync = async () => {
-		  let userToken;
+		  let storedToken;
 	
 		  try {
-			userToken = await AsyncStorage.getItem('userToken');
+			storedToken = await AsyncStorage.getItem('userToken');
 		  } catch (e) {
 			// Restoring token failed
 		  }
@@ -69,7 +69,7 @@ export default () => {
 	
 		  // This will switch to the App screen or Auth screen and this loading
 		  // screen will be unmounted and thrown away.
-		  dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+		  dispatch({ type: 'RESTORE_TOKEN', userToken: storedToken });
 		};
 	
 		bootstrapAsync();
@@ -84,8 +84,7 @@ export default () => {
 			// We will also need to handle errors if sign in failed
 			// After getting token, we need to persist the token using `AsyncStorage`
 			// In the example, we'll use a dummy token
-
-			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+			dispatch({ type: 'SIGN_IN', userToken: 'dummy-auth-token' });
 		},
 		signOut: () => dispatch({ type: 'SIGN_OUT' }),
 		signUp: async data => {
@@ -94,7 +93,7 @@ export default () => {
 			// After getting token, we need to persist the token using `AsyncStorage`
 			// In the example, we'll use a dummy token
 
-			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+			dispatch({ type: 'SIGN_IN', userToken: 'dummy-auth-token' });
 		},
 		}),
 		[]
@@ -108,9 +107,9 @@ export default () => {
 				<Tab.Screen name="Search" component={SearchScreen} />
 				
 				{state.userToken == null ? (
-          			<Tab.Scren name="Login" component={LoginScreen} />
+          			<Tab.Screen name="Login" component={LoginScreen} />
         		) : (
-					<Tab.Screen name="LOGGET IND" component={LoginScreen} />
+					<Tab.Screen name="Create post" component={CreatepostScreen} />
         		)}
 			</Tab.Navigator>
 		</NavigationContainer>
