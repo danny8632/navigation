@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer, useEffect, useMemo, Alert }from 'react';
 import { StyleSheet, Alert } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,7 +24,7 @@ function HomeStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default () => {
-	const [state, dispatch] = React.useReducer(
+	const [state, dispatch] = useReducer(
 		(prevState, action) => {
 		  switch (action.type) {
 			case 'RESTORE_TOKEN':
@@ -54,7 +54,7 @@ export default () => {
 		}
 	);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		// Fetch token using AsyncStorage. currently not used 
 		const bootstrapAsync = async () => {
 		  let storedToken;
@@ -72,7 +72,7 @@ export default () => {
 	  []
 	);
 
-	const authContext = React.useMemo(
+	const authContext = useMemo(
 		() => ({
 		signIn: async (username, password) => {
 			if (!!username && !!password)
@@ -81,7 +81,7 @@ export default () => {
 			} 
 			else 
 			{
-				Alert.alert(
+				alert(
 					"Empty username or password",
 					"Please fill out both fields",
 					[
