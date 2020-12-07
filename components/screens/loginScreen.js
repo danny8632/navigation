@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from '../../common';
-import Post from '../post';
+import { Button, Validate, TextField } from '../../common';
 import AuthContext from '../authContext';
 
-
 const LoginScreen = () => {
+    const { signIn } = React.useContext(AuthContext);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const { signIn } = React.useContext(AuthContext);
+    const [usernameError, setUsernameError] = React.useState('');
+    const [passwordError, setPasswordError] = React.useState('');
 
     return (
         <View style={styles.container}>
             <View style={styles.inputView}>
-                <TextInput
+                <TextField
                     style={styles.inputText}
                     placeholder="Email or username" 
                     placeholderTextColor="#bbbebf"
                     onChangeText={text => setUsername(text)}
                     value={username}
+                    error={usernameError}
                 />
             </View>
-                
             <View style={styles.inputView}>
-                <TextInput
+                <TextField
                     style={styles.inputText}
                     placeholder="Password" 
                     placeholderTextColor="#bbbebf"
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}
                     value={password}
+                    error={passwordError}
                 />
             </View>
 

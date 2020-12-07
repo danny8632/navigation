@@ -58,7 +58,6 @@ export default () => {
 		// Fetch token using AsyncStorage. currently not used 
 		const bootstrapAsync = async () => {
 		  let storedToken;
-	
 		  try {
 			storedToken = await AsyncStorage.getItem('userToken');
 		  } catch (e) {
