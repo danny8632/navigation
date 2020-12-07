@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from '../../common';
+import Post from '../post';
+import AuthContext from '../authContext';
+
+function Authenticate(username, password)
+{
+    if (username == 'admin' && password == '1234')
+    {
+        console.log("redirect to create post");
+    }
+}
 
 const LoginScreen = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const { signIn } = React.useContext(AuthContext);
 
     return (
         <View style={styles.container}>
@@ -29,7 +40,7 @@ const LoginScreen = () => {
                 />
             </View>
 
-            <Button title="Login" onPress={() => console.log(username, password)} style={styles.loginBtn} />
+            <Button title="Login" onPress={() => signIn(username, password)} style={styles.loginBtn} />
 
             <TouchableOpacity>
                 <Text style={styles.loginText}>Sign Up</Text>

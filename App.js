@@ -8,7 +8,7 @@ import HomeScreen from './components/screens/homeScreen';
 import SearchScreen from './components/screens/searchScreen';
 import PostScreen from './components/screens/postScreen';
 import LoginScreen from './components/screens/loginScreen';
-
+import AuthContext from './components/authContext';
 
 const HomeStack = createStackNavigator();
 
@@ -25,13 +25,20 @@ const Tab = createBottomTabNavigator();
 
 export default () => {
 	return (
-		<NavigationContainer>
+	<AuthContext.Provider value={authContext}>
+	  <NavigationContainer>
 			<Tab.Navigator>
 				<Tab.Screen name="Home" component={HomeStackScreen} />
 				<Tab.Screen name="Search" component={SearchScreen} />
 				<Tab.Screen name="Login" component={LoginScreen} />
+				{state.userToken == null ? (
+          			<Stack.Screen name="SignIn" component={SignInScreen} />
+        		) : (
+          			<Stack.Screen name="Home" component={HomeScreen} />
+        		)}
 			</Tab.Navigator>
 		</NavigationContainer>
+    </AuthContext.Provider>
 	);
 }
 
