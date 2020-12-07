@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button, Validate, TextField } from '../../common';
+import { Button } from '../../common';
 import AuthContext from '../authContext';
 
 const LoginScreen = () => {
@@ -13,7 +13,7 @@ const LoginScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.inputView}>
-                <TextField
+                <TextInput
                     style={styles.inputText}
                     placeholder="Email or username" 
                     placeholderTextColor="#bbbebf"
@@ -23,7 +23,7 @@ const LoginScreen = () => {
                 />
             </View>
             <View style={styles.inputView}>
-                <TextField
+                <TextInput
                     style={styles.inputText}
                     placeholder="Password" 
                     placeholderTextColor="#bbbebf"
