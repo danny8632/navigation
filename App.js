@@ -23,9 +23,8 @@ function HomeStackScreen() {
 
 const Tab = createBottomTabNavigator();
 
-
 export default () => {
-	const [state, dispatch] = useReducer(
+	const [state, dispatch] = React.useReducer(
 		(prevState, action) => {
 		  switch (action.type) {
 			case 'RESTORE_TOKEN':
@@ -55,7 +54,7 @@ export default () => {
 		}
 	);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		// Fetch token using AsyncStorage. currently not used 
 		const bootstrapAsync = async () => {
 		  let storedToken;
@@ -73,7 +72,7 @@ export default () => {
 	  []
 	);
 
-	const authContext = useMemo(
+	const authContext = React.useMemo(
 		() => ({
 		signIn: async (username, password) => {
 			if (!!username && !!password)
