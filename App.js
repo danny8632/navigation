@@ -1,5 +1,5 @@
-import React, { useReducer, useEffect, useMemo, Alert }from 'react';
-import { StyleSheet, Alert } from 'react-native';
+import React, { useReducer, useEffect, useMemo }from 'react';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
