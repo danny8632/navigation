@@ -1,47 +1,54 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from '../../common';
+import { Button, Validate, TextField } from '../../common';
 import Post from '../post';
 import AuthContext from '../authContext';
 
-function Authenticate(username, password)
-{
-    if (username == 'admin' && password == '1234')
+function Login(username, password) {
+    const { signIn } = React.useContext(AuthContext);
+    const usernameError = Validate('username', username);
+    const passwordError = Validate('password', password);
+
+    setUsernameError(usernameError);
+    setPasswordError(passwordError);
+
+    if (!usernameError && !passwordError)
     {
-        console.log("redirect to create post");
+        signIn(username, password);
     }
 }
-
 
 const LoginScreen = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const { signIn } = React.useContext(AuthContext);
+    const [usernameError, setUsernameError] = React.useState('');
+    const [passwordError, setPasswordError] = React.useState('');
 
     return (
         <View style={styles.container}>
             <View style={styles.inputView}>
-                <TextInput
+                <TextField
                     style={styles.inputText}
                     placeholder="Email or username" 
                     placeholderTextColor="#bbbebf"
                     onChangeText={text => setUsername(text)}
                     value={username}
+                    error={usernameError}
                 />
             </View>
-                
             <View style={styles.inputView}>
-                <TextInput
+                <TextField
                     style={styles.inputText}
                     placeholder="Password" 
                     placeholderTextColor="#bbbebf"
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}
                     value={password}
+                    error={passwordError}
                 />
             </View>
 
-            <Button title="Login" onPress={() => signIn(username, password)} style={styles.loginBtn} />
+            <Button title="Login" onPress={() => Login(username, password)} style={styles.loginBtn} />
 
             <TouchableOpacity>
                 <Text style={styles.loginText}>Sign Up</Text>

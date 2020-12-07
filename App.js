@@ -58,9 +58,10 @@ export default () => {
 		// Fetch token using AsyncStorage. currently not used 
 		const bootstrapAsync = async () => {
 		  let storedToken;
-	
+		  console.log('token');
 		  try {
 			storedToken = await AsyncStorage.getItem('userToken');
+			console.log(storedToken);
 		  } catch (e) {
 			// error handling
 		  }
@@ -75,8 +76,19 @@ export default () => {
 
 	const authContext = React.useMemo(
 		() => ({
-		signIn: async data => {
-			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+		signIn: async (user, pass) => {
+			if (user == 'Admin' && pass == '123')
+			{
+				try {
+					await AsyncStorage.setItem(
+					  'userToken',
+					  'enbettegemme'
+					);
+				  } catch (error) {
+					// Error saving data
+				  }
+				dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+			}
 		},
 		signOut: () => dispatch({ type: 'SIGN_OUT' }),
 		signUp: async data => {
