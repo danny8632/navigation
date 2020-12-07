@@ -4,7 +4,6 @@ import Post from '../post';
 
 import {Comments} from './../../api/constants';
 
-
 const Comment = ({comment}) => {
     return (
         <View style={styles.comment}>
@@ -31,14 +30,15 @@ const PostScreen = ({route}) => {
 
     let comments = Comments.filter(comment => comment.postId == route.params.post.id);
 
-    return (
+    return ( 
         <SafeAreaView style={styles.container}>
-			<Post post={route.params.post}></Post>
-            <Description post={route.params.post}></Description>
+            <ScrollView>
+                <Post post={route.params.post}></Post>
+                <Description post={route.params.post}></Description>
 
-            <ScrollView removeClippedSubviews={true}>
                 {comments.map(x => <Comment key={x.id} comment={x} />)}
-            </ScrollView>
+                
+                </ScrollView>
 		</SafeAreaView>
     );
 }
