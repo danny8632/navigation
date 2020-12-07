@@ -4,14 +4,6 @@ import { Button } from '../../common';
 import Post from '../post';
 import AuthContext from '../authContext';
 
-function Authenticate(username, password)
-{
-    if (username == 'admin' && password == '1234')
-    {
-        console.log("redirect to create post");
-    }
-}
-
 
 const LoginScreen = () => {
     const [username, setUsername] = React.useState('');

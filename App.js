@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -75,8 +75,25 @@ export default () => {
 
 	const authContext = React.useMemo(
 		() => ({
-		signIn: async data => {
-			dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+		signIn: async (username, password) => {
+			if (!!username && !!password)
+			{
+				dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+			} else 
+			{
+				Alert.alert(
+					"Empty username or password",
+					"Please fill out both fields",
+					[
+					  {
+						text: "Cancel",
+						style: "cancel"
+					  },
+					  { text: "OK" }
+					],
+					{ cancelable: false }
+				  );
+			}
 		},
 		signOut: () => dispatch({ type: 'SIGN_OUT' }),
 		signUp: async data => {
